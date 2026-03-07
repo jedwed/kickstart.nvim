@@ -337,6 +337,7 @@ require('lazy').setup({
         -- vtsls = {},
         stylua = {}, -- Used to format Lua code
         -- jdtls = {},
+        marksman = {},
         lua_ls = {
           on_init = function(client)
             if client.workspace_folders then
@@ -371,6 +372,8 @@ require('lazy').setup({
         'mypy',
         'prettierd',
         'prettier',
+        'markdownlint-cli2',
+        'markdown-toc',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -433,12 +436,10 @@ require('lazy').setup({
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
+          },
         },
         opts = {},
       },
@@ -470,20 +471,28 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+  -- { -- You can easily change to a different colorscheme.
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   config = function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require('tokyonight').setup {
+  --       styles = {
+  --         comments = { italic = false }, -- Disable italics in comments
+  --       },
+  --     }
+  --     vim.cmd.colorscheme 'tokyonight-night'
+  --   end,
+  -- },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
-      }
-      vim.cmd.colorscheme 'tokyonight-night'
+      require('catppuccin').setup {}
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
-
   {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
@@ -564,6 +573,10 @@ require('lazy').setup({
   -- require 'custom.plugins.nvim-jdtls',
   require 'custom.plugins.nvim-java',
   require 'custom.plugins.vim-tmux-navigator',
+  require 'custom.plugins.snacks',
+  require 'custom.plugins.obsidian',
+  require 'custom.plugins.markdown-preview',
+  require 'custom.plugins.render-markdown',
   -- { import = 'custom.plugins' },
 }, { ---@diagnostic disable-line: missing-fields
   ui = {
