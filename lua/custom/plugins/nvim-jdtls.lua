@@ -2,5 +2,5 @@
 ---@type LazySpec
 return {
   'mfussenegger/nvim-jdtls',
-  opts = {},
+  config = function() vim.lsp.enable 'jdtls' end,
 }

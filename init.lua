@@ -510,6 +510,10 @@ require('lazy').setup({
 
       require('mini.surround').setup()
 
+      local minifiles = require 'mini.files'
+      minifiles.setup()
+      vim.keymap.set('n', '<leader>m', minifiles.open, { desc = 'Open mini.files' })
+
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
@@ -570,10 +574,10 @@ require('lazy').setup({
   require 'custom.plugins.lualine',
   require 'custom.plugins.oil',
   require 'custom.plugins.typescript-tools',
-  -- require 'custom.plugins.nvim-jdtls',
-  require 'custom.plugins.nvim-java',
+  require 'custom.plugins.nvim-jdtls',
+  -- require 'custom.plugins.nvim-java',
   require 'custom.plugins.vim-tmux-navigator',
-  require 'custom.plugins.snacks',
+  -- require 'custom.plugins.snacks',
   require 'custom.plugins.obsidian',
   require 'custom.plugins.markdown-preview',
   require 'custom.plugins.render-markdown',
