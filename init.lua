@@ -338,6 +338,7 @@ require('lazy').setup({
         stylua = {}, -- Used to format Lua code
         -- jdtls = {},
         marksman = {},
+        bashls = {},
         lua_ls = {
           on_init = function(client)
             if client.workspace_folders then
@@ -374,6 +375,8 @@ require('lazy').setup({
         'prettier',
         'markdownlint-cli2',
         'markdown-toc',
+        'shfmt',
+        'shellcheck',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
